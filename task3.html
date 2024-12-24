@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background-color: rgb(253, 238, 219);
+            padding: 3%;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        hr {
+            margin: 2rem 0;
+        }
+        h3 {
+            text-align: center;
+        }
+        #btns {
+            display: flex;
+            width: 500px;
+            justify-content: space-between;
+        }
+        #colors {
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 700px;
+        }
+        #content {
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            width: 700px;
+        }
+        .div-item {
+            padding: 6px;
+            text-align: center;
+            width: 200px;
+            color: white;
+            border: 1px solid gray;
+            margin: 1rem 0;
+        }
+        .div-hover {
+            margin: 0;
+            width: 100px;
+            cursor: default;
+        }
+        .red {
+            background-color: rgb(233, 111, 141);
+        }
+        .green {
+            background-color: rgb(102, 211, 187);
+        }
+        .orange {
+            background-color: rgb(238, 139, 59);
+        }
+        .yellow {
+            background-color: rgb(238, 216, 90);
+        }
+        .shadow {
+            box-shadow: rgba(0, 0, 0, 0.8) 0px 0px 15px ;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            $(".div-hover").mouseover(function(e) {
+                $(this).addClass("shadow");
+                let color = $(this).attr("class").split(/\s+/)[2];
+                $(`.item.${color}`).addClass("shadow");
+            });
+
+            $(".div-hover").mouseout(function(e) {
+                $(this).removeClass("shadow");
+                $(".item").removeClass("shadow");
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="colors">
+        <h3>Select color:</h3>
+        <div id="btns">
+            <div class="div-item div-hover red">red</div>
+            <div class="div-item div-hover green">green</div>
+            <div class="div-item div-hover orange">orange</div>
+            <div class="div-item div-hover yellow">yellow</div>
+        </div>
+    </div>
+    <hr>
+    <h3>Fruits:</h3>
+    <div id="content">
+        <div class="div-item item red">apple</div>
+        <div class="div-item item green">pear</div>
+        <div class="div-item item orange">orange</div>
+        <div class="div-item item red">mango</div>
+        <div class="div-item item orange">mandarin</div>
+        <div class="div-item item yellow">pineapple</div>
+        <div class="div-item item green">avocado</div>
+        <div class="div-item item red">red pepper</div>
+        <div class="div-item item green">green pepper</div>
+    </div>
+</body>
+</html>

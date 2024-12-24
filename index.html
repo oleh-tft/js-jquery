@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("body").css("background", "url('bg.jpg')").css("background-size", "cover");
+
+            $(document).mousemove(function(e) {
+                let validX = e.pageX > $("#bird").width() / 4 && e.pageX < $(document).width() - $("#bird").width() / 2;
+                let validY = e.pageY > $("#bird").height() / 4 && e.pageY < $(document).height() - $("#bird").height() / 2;
+                if (validX && validY) {
+                    $("#bird")
+                        .css("top", e.pageY - $("#bird").height() / 2 + "px")
+                        .css("left", e.pageX - $("#bird").width() / 2  + "px");
+                }
+                
+                $("#bird").css("transform", `scale(${e.pageX / $(document).width()})`);
+            });
+        });
+    </script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            cursor: none;
+        }
+        #bird {
+            position: absolute;
+            width: 20%;
+        }
+    </style>
+</head>
+<body>
+    <img src="bird2.gif" alt="" id="bird">
+</body>
+</html>
